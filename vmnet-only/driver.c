@@ -268,7 +268,7 @@ VNetRemovePortFromList(const VNetPort *port) // IN: port to remove from list
 /*
  *----------------------------------------------------------------------
  *
- * LinuxDriverInit --
+ * vmnet_init_module --
  *
  *      linux module entry point. Called by /sbin/insmod command.
  *      Initializes module and Registers this driver for a
@@ -1396,8 +1396,8 @@ VNetCycleDetectIf(const char *name, // IN:
  *----------------------------------------------------------------------
  */
 
-void
-VNetFreeInterfaceList()
+static void
+VNetFreeInterfaceList(void)
 {
    while (vnetInterfaces != NULL) {
       VNetInterface *next = vnetInterfaces->next;

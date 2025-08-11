@@ -48,6 +48,7 @@
 #include <asm/io.h>
 #include <asm/page.h>
 #include <asm/uaccess.h>
+#include <asm/irq_vectors.h>
 #include <linux/capability.h>
 #include <linux/kthread.h>
 #include <linux/wait.h>
@@ -1995,7 +1996,7 @@ HostIF_InitUptime(void)
 void
 HostIF_CleanupUptime(void)
 {
-   del_timer_sync(&uptimeState.timer);
+   timer_delete_sync(&uptimeState.timer);
 }
 
 
@@ -3351,7 +3352,7 @@ HostIF_SetFastClockRate(unsigned int rate) // IN: Frequency in Hz.
     * threads running in the monitor on all physical CPUs.
     */
 
-   if (false) {
+   if (rate > MIN_RATE) {
       if (!linuxState.fastClockThread) {
          struct task_struct *rtcTask;
 
