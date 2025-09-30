@@ -7,7 +7,7 @@ This repository provides a patch for VMware Workstation host modules (`vmmon` an
 ## Tested on
 
 - VMware Workstation Pro: Version 17.6.x
-- Linux Kernels: Up to version 6.15.9
+- Linux Kernels: Up to version 6.16.x
 
 The [original code](https://github.com/mkubecek/vmware-host-modules) was modified to provide immediate fixes for VMware Workstation versions 17.5.2 and 17.6, as the existing patches were not functional for our setup.
 
